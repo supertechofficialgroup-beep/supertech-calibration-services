@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -86,6 +86,7 @@
           <li><a href="#verify" class="nav-link">Verify Certificate</a></li>
           <li><a href="#team" class="nav-link">Leadership</a></li>
           <li><a href="#locations" class="nav-link">Locations</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
         </ul>
 
         <!-- Action CTAs -->
@@ -126,6 +127,7 @@
         <li><a href="#verify" class="mobile-nav-link"><i class="fa-solid fa-shield-halved"></i> Verify Certificate</a></li>
         <li><a href="#team" class="mobile-nav-link"><i class="fa-solid fa-user-graduate"></i> Technical Leadership</a></li>
         <li><a href="#locations" class="mobile-nav-link"><i class="fa-solid fa-map-location-dot"></i> Head Office & Lab Locations</a></li>
+        <li><a href="#gallery" class="mobile-nav-link"><i class="fa-solid fa-images"></i> Photo Gallery</a></li>
         <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact & Inquiries</a></li>
       </ul>
     </div>
@@ -914,6 +916,180 @@
   </section>
 
   <!-- ==========================================================================
+       PHOTO GALLERY SECTION
+       ========================================================================== -->
+  <section class="section section-light" id="gallery">
+    <div class="container container-wide">
+      <div class="text-center reveal reveal-up">
+        <span class="section-tag"><i class="fa-solid fa-images"></i> Our Laboratory & Instruments</span>
+        <h2 class="section-title">Inside Super Tech: A Visual Tour</h2>
+        <p class="section-subtitle">
+          A closer look at our precision instruments, calibration standards, and state-of-the-art laboratory facility at Bhiwadi.
+        </p>
+      </div>
+
+      <!-- Gallery Filter Tabs -->
+      <div class="gallery-filter-tabs reveal reveal-up delay-100">
+        <button class="gallery-filter-btn active" data-filter="all">All Photos</button>
+        <button class="gallery-filter-btn" data-filter="instruments">Instruments</button>
+        <button class="gallery-filter-btn" data-filter="standards">Standards</button>
+        <button class="gallery-filter-btn" data-filter="facility">Facility</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid reveal reveal-up delay-200" id="galleryGrid">
+
+        <div class="gallery-item" data-category="instruments" data-title="Shore Hardness Tester" data-desc="Package Shore Hardness Tester (Type D) — a key instrument in our hardness measurement calibration scope." style="--i:1">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-shore-hardness-tester.jpg" alt="Shore Hardness Tester Calibration Instrument" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Shore Hardness Tester</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge"><i class="fa-solid fa-ruler-combined"></i> Mechanical</span>
+            <p>Shore Hardness Tester (Type D)</p>
+          </div>
+        </div>
+
+        <div class="gallery-item gallery-item-tall" data-category="instruments" data-title="Digital Multimeter" data-desc="Process Calibrator &amp; Digital Multimeter (CAT II 600V) — our primary Electro-Technical calibration standard." style="--i:2">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-digital-multimeter.jpg" alt="Digital Multimeter Electro-Technical Calibration" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Digital Multimeter</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge gallery-cat-elec"><i class="fa-solid fa-bolt"></i> Electro-Technical</span>
+            <p>Process Calibrator & Multimeter</p>
+          </div>
+        </div>
+
+        <div class="gallery-item gallery-item-wide" data-category="standards" data-title="Dry Film Thickness Standards" data-desc="Certified Dry Film Thickness Standards (9–735 microns, ±2 microns accuracy) — NPL-traceable reference foils for coating gauge calibration." style="--i:3">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-dry-film-standards.jpg" alt="Dry Film Thickness Reference Standards" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Dry Film Thickness Standards</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge gallery-cat-std"><i class="fa-solid fa-certificate"></i> Standards</span>
+            <p>Dry Film Thickness Reference Foils (9–735 µm)</p>
+          </div>
+        </div>
+
+        <div class="gallery-item gallery-item-wide" data-category="instruments" data-title="Precision Metrology Suite" data-desc="Digital Dial Indicator, Micrometer, Vernier Caliper &amp; Pressure Gauge — the core of our Mechanical &amp; Dimensional calibration capabilities." style="--i:4">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-precision-instruments.jpg" alt="Precision Metrology Instruments Calibration" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Precision Metrology Suite</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge"><i class="fa-solid fa-ruler-combined"></i> Mechanical</span>
+            <p>Digital Indicator, Micrometer & Pressure Gauge Ensemble</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="facility" data-title="Laboratory Facility — Entry Corridor" data-desc="The entry corridor of our cleanroom laboratory facility at S-52, Phase III, Bhiwadi — temperature-controlled at 20°C ± 1°C for zero thermal drift." style="--i:5">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-lab-facility.jpg" alt="Super Tech Calibration Laboratory Facility Bhiwadi" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Laboratory Facility</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
+            <p>Cleanroom Lab — S-52, Phase III, Bhiwadi</p>
+          </div>
+        </div>
+
+        <div class="gallery-item gallery-item-wide" data-category="facility" data-title="Client Reception Area" data-desc="Our modern client reception area at the Head Office — TC-622, Capital Highstreet, Bhiwadi. Designed for comfortable wait time and professional client meetings." style="--i:6">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-office-reception.jpg" alt="Super Tech Head Office Reception Area Bhiwadi" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Client Reception Area</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
+            <p>Client Waiting & Reception — Head Office, TC-622</p>
+          </div>
+        </div>
+
+        <div class="gallery-item gallery-item-tall" data-category="facility" data-title="Director's Cabin" data-desc="The Director's private cabin at our Head Office — a premium workspace with LED ambient lighting, glass-top executive desk, and a serene garden view." style="--i:7">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-office-cabin.jpg" alt="Super Tech Director Cabin Head Office Bhiwadi" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Director's Cabin</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
+            <p>Director's Cabin — LED-lit Executive Suite</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="facility" data-title="Decorative Office Entrance" data-desc="The beautifully decorated glass entrance door of our Head Office adorned with floral garlands — a warm welcome for every client visiting Super Tech Calibration Services." style="--i:8">
+          <div class="gallery-img-wrap">
+            <img src="assets/img/gallery-office-entrance.jpg" alt="Super Tech Office Entrance Decorative Glass Door" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-item-title">Office Entrance</span>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item-caption">
+            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-door-open"></i> Facility</span>
+            <p>Decorative Glass Entrance — Head Office</p>
+          </div>
+        </div>
+
+      </div><!-- end .gallery-grid -->
+    </div>
+  </section>
+
+  <!-- GALLERY LIGHTBOX MODAL -->
+  <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-container">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox"><i class="fa-solid fa-xmark"></i></button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lightboxImg" class="lightbox-img">
+      </div>
+      <div class="lightbox-caption">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDesc"></p>
+        <div class="lightbox-counter"><span id="lightboxCurrent">1</span> / <span id="lightboxTotal">5</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
        CONTACT & RFQ INQUIRY SECTION
        ========================================================================== -->
   <section class="section section-light" id="contact">
@@ -1074,6 +1250,7 @@
             <li><a href="#services">All Calibration Services</a></li>
             <li><a href="#scope">Scope & Parameter Directory</a></li>
             <li><a href="#verify">Verify Certificate Online</a></li>
+            <li><a href="#gallery">Photo Gallery</a></li>
             <li><a href="#locations">Head Office & Lab Locations</a></li>
           </ul>
         </div>
@@ -1190,12 +1367,6 @@
       <span class="floating-tooltip">Instant WhatsApp Chat</span>
     </a>
   </aside>
-
-      <div class="quotation-paper" id="quotationPaperBody">
-        <!-- Rendered by js/main.js -->
-      </div>
-    </div>
-  </div>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>

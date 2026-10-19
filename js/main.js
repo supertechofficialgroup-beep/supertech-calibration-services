@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SUPER TECH CALIBRATION SERVICES
  * Core Interactive Application Logic
  * Mobile Navigation, Scroll Progress, Scroll Reveal Animations,
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCertVerification();
   initContactForm();
   initCounters();
+  initGallery();
 });
 
 /* ==========================================================================
@@ -872,4 +873,124 @@ function initCounters() {
 
   const metricsSection = document.querySelector('.metrics-strip');
   if (metricsSection) observer.observe(metricsSection);
+}
+
+/* ==========================================================================
+   PHOTO GALLERY & LIGHTBOX
+   ========================================================================== */
+function initGallery() {
+  const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('galleryLightbox');
+  const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc = document.getElementById('lightboxDesc');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCurrent = document.getElementById('lightboxCurrent');
+  const lightboxTotal = document.getElementById('lightboxTotal');
+
+  if (!lightbox) return;
+
+  // Track active (visible) items for lightbox navigation
+  let activeItems = Array.from(galleryItems);
+  let currentIndex = 0;
+
+  // --- FILTER LOGIC ---
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      activeItems = [];
+
+      galleryItems.forEach(item => {
+        const cat = item.dataset.category;
+        if (filter === 'all' || cat === filter) {
+          item.classList.remove('gallery-hidden');
+          // Trigger re-appear animation
+          item.classList.remove('gallery-show');
+          void item.offsetWidth; // force reflow to restart animation
+          item.classList.add('gallery-show');
+          setTimeout(() => item.classList.remove('gallery-show'), 700);
+          activeItems.push(item);
+        } else {
+          item.classList.remove('gallery-show');
+          item.classList.add('gallery-hidden');
+        }
+      });
+
+      if (lightboxTotal) lightboxTotal.textContent = activeItems.length;
+    });
+  });
+
+  // Initialize total count
+  if (lightboxTotal) lightboxTotal.textContent = activeItems.length;
+
+  // --- OPEN LIGHTBOX ---
+  function openLightbox(index) {
+    if (activeItems.length === 0) return;
+    currentIndex = index;
+    const item = activeItems[currentIndex];
+    const img = item.querySelector('img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    if (lightboxTitle) lightboxTitle.textContent = item.dataset.title || '';
+    if (lightboxDesc) lightboxDesc.textContent = item.dataset.desc || '';
+    if (lightboxCurrent) lightboxCurrent.textContent = currentIndex + 1;
+    if (lightboxTotal) lightboxTotal.textContent = activeItems.length;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    // Clear src after transition so the old image doesn't flash on next open
+    setTimeout(() => { lightboxImg.src = ''; }, 300);
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + activeItems.length) % activeItems.length;
+    openLightbox(currentIndex);
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % activeItems.length;
+    openLightbox(currentIndex);
+  }
+
+  // Click on gallery item
+  galleryItems.forEach((item, idx) => {
+    item.addEventListener('click', () => {
+      // Recalculate index within activeItems
+      const activeIdx = activeItems.indexOf(item);
+      if (activeIdx !== -1) openLightbox(activeIdx);
+    });
+  });
+
+  // Close actions
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+  if (lightboxNext) lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) dx < 0 ? showNext() : showPrev();
+  });
 }
