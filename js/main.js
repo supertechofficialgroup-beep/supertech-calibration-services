@@ -904,13 +904,12 @@ function initGallery() {
   let currentRenderedCols = 0;
 
   // Responsive column determination:
-  // Desktop (>= 1200px): 4 columns
-  // Tablet / Medium (768px - 1199px): 3 columns (or 2 columns on 768-899px)
-  // Mobile (< 768px): 2 columns (520px - 767px), 1 column (< 520px)
+  // Desktop (>= 1180px): 4 columns
+  // Tablet / Medium (769px - 1179px): 3 columns
+  // Mobile (<= 768px): 3 columns (creates 3 col x 2 row grid)
   function getResponsiveCols() {
     const w = window.innerWidth;
-    if (w < 520) return 1;
-    if (w < 820) return 2;
+    if (w <= 768) return 3; // Mobile: 3 columns (creates 3 col x 2 row grid)
     if (w < 1180) return 3;
     return 4;
   }
