@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    SUPER TECH CALIBRATION SERVICES - PREMIUM DESIGN SYSTEM
    Theme: Precision Industrial Teal & Obsidian Slate
    ISO/IEC 17025 Metrology & Testing Standard
@@ -501,6 +501,15 @@ button {
   align-items: center;
   gap: 1.6rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .nav-link {
@@ -509,7 +518,16 @@ button {
   color: var(--slate-700);
   position: relative;
   padding: 0.5rem 0;
+  white-space: nowrap;
   transition: color var(--transition-fast);
+}
+
+.nav-text-full {
+  display: inline;
+}
+
+.nav-text-short {
+  display: none;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -536,15 +554,19 @@ button {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  flex-shrink: 0;
 }
 
 .mobile-menu-btn {
   display: none;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--slate-800);
-  padding: 0.6rem;
+  padding: 0.5rem;
   border-radius: var(--radius-md);
-  transition: background-color var(--transition-fast);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .mobile-menu-btn:hover {
@@ -627,6 +649,16 @@ button {
 .mobile-drawer-body {
   padding: 1.5rem;
   flex-grow: 1;
+}
+
+.mobile-drawer-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--slate-400);
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
 }
 
 .mobile-nav-links {
@@ -2277,6 +2309,56 @@ button {
   }
 }
 
+/* ==========================================================================
+   TABLET & MEDIUM DESKTOP ADAPTIVE NAVIGATION (All 8 items maintained)
+   ========================================================================== */
+@media (max-width: 1180px) and (min-width: 769px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nav-container {
+    height: 68px;
+  }
+
+  .brand-logo-img {
+    height: 44px;
+  }
+
+  .nav-links {
+    gap: 0.65rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.15rem;
+  }
+
+  .nav-cta-group .btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 920px) and (min-width: 769px) {
+  .nav-cta-group {
+    display: none;
+  }
+
+  .nav-links {
+    gap: 0.85rem;
+  }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE NAVIGATION (Essential 3 items + Hamburger drawer)
+   ========================================================================== */
 @media (max-width: 768px) {
   .section {
     padding-top: 3.5rem;
@@ -2288,20 +2370,102 @@ button {
     display: none;
   }
 
-  .nav-links, .nav-cta-group {
-    display: none;
-  }
-  
-  .mobile-menu-btn {
-    display: block;
+  /* Compact responsive header with minimal vertical height */
+  .main-header {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
   }
 
   .nav-container {
-    height: 64px;
+    height: 58px;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .brand-logo-wrap {
+    flex-shrink: 0;
   }
 
   .brand-logo-img {
-    height: 44px;
+    height: 38px;
+    max-width: 110px;
+    object-fit: contain;
+  }
+
+  /* Mobile navigation: display ONLY essential items */
+  .nav-links {
+    display: flex !important;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  /* Hide secondary navigation items on mobile main navigation */
+  .nav-item-secondary {
+    display: none !important;
+  }
+
+  /* Keep essential navigation items visible */
+  .nav-item-essential {
+    display: inline-flex !important;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--slate-700);
+    padding: 0.4rem 0.2rem;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--teal-600);
+  }
+
+  .nav-link::after {
+    height: 2.5px;
+  }
+
+  /* Hide desktop header WhatsApp CTA on mobile to prioritize nav items */
+  .nav-cta-group {
+    display: none !important;
+  }
+
+  /* Compact touch-friendly hamburger button */
+  .mobile-menu-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.15rem;
+    color: var(--slate-800);
+    background: var(--slate-100);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-menu-btn:hover,
+  .mobile-menu-btn:active {
+    background: var(--teal-50);
+    color: var(--teal-600);
+    border-color: var(--teal-200);
   }
 
   .hero-section {
@@ -2405,29 +2569,23 @@ button {
     gap: 2rem;
   }
 
-  /* Show Sticky Bottom Bar on Mobile */
-  .mobile-bottom-bar {
-    display: block;
-  }
-
-  /* Reposition Floating Action Dock so it doesn't overlap mobile bottom bar */
+  /* Reposition Floating Action Dock neatly on mobile */
   .floating-action-dock {
-    bottom: 5rem;
-    right: 1.25rem;
+    bottom: 1.25rem;
+    right: 1rem;
+    gap: 0.65rem;
   }
 
   .floating-btn {
-    width: 48px;
-    height: 48px;
-    font-size: 1.25rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
   }
 
-  .floating-btn.phone, .floating-btn.whatsapp {
-    display: none; /* These are in the sticky mobile bottom bar */
-  }
-
+  .floating-btn.phone,
+  .floating-btn.whatsapp,
   .floating-btn.back-to-top {
-    display: flex;
+    display: flex !important;
   }
 
   .quotation-paper {
@@ -2437,8 +2595,43 @@ button {
 
 @media (max-width: 480px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .nav-container {
+    height: 54px;
+    gap: 0.35rem;
+  }
+
+  .brand-logo-img {
+    height: 34px;
+    max-width: 92px;
+  }
+
+  .nav-links {
+    gap: 0.45rem;
+  }
+
+  .nav-link {
+    font-size: 0.76rem;
+    padding: 0.35rem 0.15rem;
+    min-height: 36px;
+  }
+
+  /* Switch "Verify Certificate" to compact "Verify Cert" on small mobile to guarantee zero line-wrapping */
+  .nav-text-full {
+    display: none !important;
+  }
+
+  .nav-text-short {
+    display: inline !important;
+  }
+
+  .mobile-menu-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.05rem;
   }
 
   .hero-title {
@@ -2455,133 +2648,180 @@ button {
   }
 }
 
+@media (max-width: 360px) {
+  .nav-container {
+    height: 50px;
+    gap: 0.25rem;
+  }
+
+  .brand-logo-img {
+    height: 30px;
+    max-width: 78px;
+  }
+
+  .nav-links {
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.71rem;
+  }
+
+  .mobile-menu-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+}
+
 /* ==========================================================================
-   PHOTO GALLERY SECTION â€” PREMIUM ANIMATED EDITION
+   PHOTO GALLERY SECTION — ANIMATED MASONRY GRID LAYOUT
    ========================================================================== */
 
-/* â”€â”€ Keyframes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-@keyframes gallery-pop {
-  0%   { opacity: 0; transform: translateY(32px) scale(0.88); }
-  60%  { opacity: 1; transform: translateY(-6px) scale(1.02); }
-  100% { opacity: 1; transform: translateY(0)    scale(1);    }
+/* Keyframe for staggered card entrance and category transition */
+@keyframes galleryCardFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-@keyframes gallery-shimmer {
-  0%   { transform: translateX(-120%) skewX(-20deg); }
-  100% { transform: translateX(220%)  skewX(-20deg); }
-}
-
-@keyframes badge-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(13,131,136,0); }
-  50%       { box-shadow: 0 0 0 6px rgba(13,131,136,0.18); }
-}
-
-/* â”€â”€ Filter Tab Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Filter Tab Bar */
 .gallery-filter-tabs {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  margin: 2rem 0 2.75rem;
+  gap: 0.75rem;
+  margin: 2rem auto 2.5rem;
+  max-width: 720px;
 }
 
 .gallery-filter-btn {
-  padding: 0.5rem 1.4rem;
+  padding: 0.55rem 1.45rem;
   border-radius: var(--radius-full);
   border: 1.5px solid var(--slate-200);
   background: #ffffff;
-  color: var(--slate-600);
+  color: var(--slate-700);
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: 0.01em;
   position: relative;
   overflow: hidden;
-}
-
-/* Shimmer sweep on filter button hover */
-.gallery-filter-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.55) 50%, transparent 60%);
-  transform: translateX(-120%) skewX(-20deg);
-  transition: none;
-}
-.gallery-filter-btn:hover::after {
-  animation: gallery-shimmer 0.55s ease forwards;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .gallery-filter-btn:hover {
   border-color: var(--teal-500);
   color: var(--teal-700);
   background: var(--teal-50);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px -4px rgba(13,131,136,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -4px rgba(13, 131, 136, 0.2);
 }
 
 .gallery-filter-btn.active {
   background: linear-gradient(135deg, var(--teal-600) 0%, var(--teal-400) 100%);
   border-color: transparent;
   color: #ffffff;
-  box-shadow: 0 8px 24px -6px rgba(13,131,136,0.45);
+  box-shadow: 0 8px 22px -6px rgba(13, 131, 136, 0.45);
   transform: translateY(-2px);
 }
 
-/* â”€â”€ Gallery Masonry Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Gallery Masonry Container */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 220px;
-  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.25rem; /* ~20px balanced gap */
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
-/* Wide = 2 cols, Tall = 2 rows */
-.gallery-item-wide { grid-column: span 2; }
-.gallery-item-tall { grid-row: span 2; }
+/* Dynamic width adaptation based on active column count */
+.gallery-grid[data-cols="1"] {
+  max-width: 440px;
+}
 
-/* â”€â”€ Individual Gallery Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.gallery-grid[data-cols="2"] {
+  max-width: 720px;
+}
+
+.gallery-grid[data-cols="3"] {
+  max-width: 980px;
+}
+
+.gallery-grid[data-cols="4"] {
+  max-width: 1240px;
+}
+
+.gallery-grid.is-filtering {
+  opacity: 0.45;
+  transform: scale(0.99);
+}
+
+/* Individual Masonry Columns */
+.gallery-masonry-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* 20px vertical gap between cards */
+  min-width: 0;
+}
+
+/* Individual Gallery Card */
 .gallery-item {
-  position: relative;
+  width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--slate-100);
-  box-shadow: var(--shadow-md);
+  background: #ffffff;
+  border: 1.5px solid var(--slate-200);
+  box-shadow: 0 3px 12px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease,
+              border-color 0.25s ease;
+  will-change: transform, box-shadow;
+  box-sizing: border-box;
+}
 
-  /* Entrance animation driven by --i stagger index */
-  opacity: 0;
-  animation: gallery-pop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: calc(var(--i, 1) * 90ms);
-
-  /* Hover/size transitions */
-  transition:
-    transform  0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.38s ease,
-    border-color 0.25s ease;
-
-  border: 2px solid transparent;
+.gallery-card-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery-item:hover {
-  transform: translateY(-8px) scale(1.035);
-  box-shadow:
-    0 24px 48px -8px rgba(13,131,136,0.28),
-    0 8px 20px -4px rgba(15,23,42,0.12);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 36px -6px rgba(13, 131, 136, 0.2),
+              0 6px 14px -2px rgba(15, 23, 42, 0.06);
   border-color: var(--teal-400);
   z-index: 2;
 }
 
-/* â”€â”€ Image Wrapper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Card Animation when shown/filtered */
+.gallery-item.gallery-animate-in {
+  animation: galleryCardFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--delay-index, 0) * 45ms);
+}
+
+/* Image Wrapper with Aspect Ratio & Placeholder */
 .gallery-img-wrap {
   position: relative;
-  flex: 1;
+  width: 100%;
   overflow: hidden;
-  min-height: 0;
+  background: var(--slate-100);
 }
 
 .gallery-img-wrap img {
@@ -2589,51 +2829,33 @@ button {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              filter    0.4s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s ease;
   filter: brightness(1) saturate(1);
 }
 
 .gallery-item:hover .gallery-img-wrap img {
-  transform: scale(1.12);
-  filter: brightness(1.06) saturate(1.1);
+  transform: scale(1.06);
+  filter: brightness(1.04) saturate(1.08);
 }
 
-/* Shimmer sweep on the image when card is hovered */
-.gallery-img-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent    30%,
-    rgba(255,255,255,0.18) 50%,
-    transparent    70%
-  );
-  transform: translateX(-120%) skewX(-20deg);
-  pointer-events: none;
-  z-index: 1;
-}
-.gallery-item:hover .gallery-img-wrap::after {
-  animation: gallery-shimmer 0.75s ease forwards;
-}
-
-/* â”€â”€ Hover Overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Hover Overlay */
 .gallery-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(13, 131, 136, 0)    30%,
-    rgba(5,  54,  56, 0.92)  100%
+    rgba(13, 131, 136, 0) 30%,
+    rgba(5, 54, 56, 0.88) 100%
   );
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.3s ease;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 1rem;
   z-index: 2;
+  pointer-events: none;
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -2642,13 +2864,11 @@ button {
 
 .gallery-overlay-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   color: #ffffff;
-  text-align: center;
-  transform: translateY(14px);
-  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(10px);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gallery-item:hover .gallery-overlay-content {
@@ -2656,100 +2876,95 @@ button {
 }
 
 .gallery-overlay-content i {
-  font-size: 1.5rem;
-  background: rgba(255,255,255,0.18);
-  width: 48px;
-  height: 48px;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.22);
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid rgba(255,255,255,0.45);
-  backdrop-filter: blur(6px);
-  transition: transform 0.3s ease, background 0.25s ease;
-}
-.gallery-item:hover .gallery-overlay-content i {
-  transform: scale(1.15) rotate(-8deg);
-  background: rgba(13, 131, 136, 0.45);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.gallery-item-title {
-  font-size: 0.88rem;
+.gallery-overlay-text {
+  font-size: 0.82rem;
   font-weight: 700;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* â”€â”€ Caption Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Standardized Card Footer */
 .gallery-item-caption {
   background: #ffffff;
-  padding: 0.6rem 0.85rem;
+  padding: 0.75rem 0.95rem;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   border-top: 1px solid var(--slate-100);
-  flex-shrink: 0;
-  transition: background 0.25s ease;
+  min-height: 52px;
+  box-sizing: border-box;
+  transition: background 0.22s ease;
 }
 
 .gallery-item:hover .gallery-item-caption {
   background: var(--teal-50);
 }
 
-.gallery-item-caption p {
-  font-size: 0.77rem;
-  color: var(--slate-600);
-  font-weight: 500;
-  line-height: 1.3;
+.gallery-caption-title {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--slate-700);
+  font-weight: 600;
+  line-height: 1.35;
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: color 0.25s ease;
+  transition: color 0.22s ease;
 }
 
-.gallery-item:hover .gallery-item-caption p {
+.gallery-item:hover .gallery-caption-title {
   color: var(--teal-700);
 }
 
-/* â”€â”€ Category Badges â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Category Badges */
 .gallery-cat-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.28rem;
-  padding: 0.2rem 0.5rem;
+  gap: 0.3rem;
+  padding: 0.22rem 0.55rem;
   border-radius: var(--radius-full);
-  font-size: 0.66rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   white-space: nowrap;
-  background: var(--teal-50);
-  color: var(--teal-700);
-  border: 1px solid var(--teal-200);
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
+
 .gallery-item:hover .gallery-cat-badge {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
-.gallery-cat-elec    { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-.gallery-cat-std     { background: #fefce8; color: #854d0e; border-color: #fde68a; }
-.gallery-cat-facility{ background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+.gallery-cat-mech    { background: var(--teal-50); color: var(--teal-700); border: 1px solid var(--teal-200); }
+.gallery-cat-elec    { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.gallery-cat-std     { background: #fefce8; color: #854d0e; border: 1px solid #fde68a; }
+.gallery-cat-facility{ background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
 
-/* â”€â”€ Filter-Hidden State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.gallery-item.gallery-hidden {
-  opacity: 0 !important;
-  pointer-events: none;
-  transform: scale(0.88) !important;
-  animation: none !important;
-}
-
-/* â”€â”€ Re-show animation when filter reveals items â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.gallery-item.gallery-show {
-  animation: gallery-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: calc(var(--i, 1) * 60ms);
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item,
+  .gallery-grid,
+  .gallery-img-wrap img,
+  .gallery-item:hover,
+  .gallery-overlay-content {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -2900,33 +3115,39 @@ button {
 }
 
 /* ==========================================================================
+/* ==========================================================================
    GALLERY RESPONSIVE
    ========================================================================== */
-@media (max-width: 1100px) {
-  .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 230px;
-  }
-}
-
 @media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 200px;
+  .gallery-filter-tabs {
+    margin: 1.5rem auto 2rem;
+    gap: 0.5rem;
   }
-  .gallery-item-wide { grid-column: span 2; }
-  .gallery-item-tall { grid-row: span 1; }
+  .gallery-filter-btn {
+    padding: 0.45rem 1.15rem;
+    font-size: 0.8125rem;
+  }
+  .gallery-grid {
+    gap: 1rem;
+  }
+  .gallery-masonry-col {
+    gap: 1rem;
+  }
 }
 
-@media (max-width: 500px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 230px;
+@media (max-width: 480px) {
+  .gallery-filter-tabs {
+    gap: 0.4rem;
   }
-  .gallery-item-wide,
-  .gallery-item-tall {
-    grid-column: span 1;
-    grid-row: span 1;
+  .gallery-filter-btn {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.76rem;
+  }
+  .gallery-grid {
+    gap: 0.85rem;
+  }
+  .gallery-masonry-col {
+    gap: 0.85rem;
   }
   .lightbox-prev { left: 0.4rem; }
   .lightbox-next { right: 0.4rem; }

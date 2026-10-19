@@ -62,7 +62,7 @@ function initNavbar() {
   const header = document.querySelector('.main-header');
   const backToTopBtn = document.getElementById('backToTopBtn');
   const navLinks = document.querySelectorAll('.nav-link');
-  const mobileBottomItems = document.querySelectorAll('.mobile-bottom-item');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
   window.addEventListener('scroll', () => {
     const scrollY = window.pageYOffset;
@@ -75,7 +75,7 @@ function initNavbar() {
       if (backToTopBtn) backToTopBtn.classList.remove('show');
     }
 
-    // ScrollSpy to highlight active link in header & mobile bottom bar
+    // ScrollSpy to highlight active link in header & mobile drawer
     const sections = document.querySelectorAll('section[id]');
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
@@ -90,7 +90,7 @@ function initNavbar() {
           }
         });
 
-        mobileBottomItems.forEach(item => {
+        mobileNavLinks.forEach(item => {
           item.classList.remove('active');
           if (item.getAttribute('href') === `#${sectionId}`) {
             item.classList.add('active');
@@ -106,7 +106,7 @@ function initNavbar() {
     });
   }
 
-  // Smooth Scroll with Header Offset
+  // Smooth Scroll with Responsive Header Offset
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -114,7 +114,7 @@ function initNavbar() {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         e.preventDefault();
-        const headerOffset = 80;
+        const headerOffset = window.innerWidth <= 768 ? 64 : 80;
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -142,6 +142,7 @@ function initMobileDrawer() {
       drawer.classList.add('active');
       overlay.classList.add('active');
       document.body.classList.add('menu-open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
     }
   }
 
@@ -150,6 +151,7 @@ function initMobileDrawer() {
       drawer.classList.remove('active');
       overlay.classList.remove('active');
       document.body.classList.remove('menu-open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
     }
   }
 
@@ -876,11 +878,11 @@ function initCounters() {
 }
 
 /* ==========================================================================
-   PHOTO GALLERY & LIGHTBOX
+   PHOTO GALLERY & LIGHTBOX (ANIMATED MASONRY GRID)
    ========================================================================== */
 function initGallery() {
+  const grid = document.getElementById('galleryGrid');
   const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('galleryLightbox');
   const lightboxBackdrop = document.getElementById('lightboxBackdrop');
   const lightboxClose = document.getElementById('lightboxClose');
@@ -892,43 +894,102 @@ function initGallery() {
   const lightboxCurrent = document.getElementById('lightboxCurrent');
   const lightboxTotal = document.getElementById('lightboxTotal');
 
-  if (!lightbox) return;
+  if (!grid || !lightbox) return;
 
-  // Track active (visible) items for lightbox navigation
-  let activeItems = Array.from(galleryItems);
+  // Cache all 8 original gallery-item elements in order
+  const allItems = Array.from(grid.querySelectorAll('.gallery-item'));
+  let currentFilter = 'all';
+  let activeItems = [...allItems];
   let currentIndex = 0;
+  let currentRenderedCols = 0;
 
-  // --- FILTER LOGIC ---
+  // Responsive column determination:
+  // Desktop (>= 1200px): 4 columns
+  // Tablet / Medium (768px - 1199px): 3 columns (or 2 columns on 768-899px)
+  // Mobile (< 768px): 2 columns (520px - 767px), 1 column (< 520px)
+  function getResponsiveCols() {
+    const w = window.innerWidth;
+    if (w < 520) return 1;
+    if (w < 820) return 2;
+    if (w < 1180) return 3;
+    return 4;
+  }
+
+  // Render or re-layout masonry columns
+  function renderMasonry(animate = false) {
+    const responsiveMaxCols = getResponsiveCols();
+    const filteredItems = allItems.filter(item => {
+      return currentFilter === 'all' || item.dataset.category === currentFilter;
+    });
+
+    activeItems = filteredItems;
+
+    // Use optimal column count based on available items and screen width
+    const targetCols = Math.min(responsiveMaxCols, Math.max(1, filteredItems.length));
+    currentRenderedCols = targetCols;
+
+    grid.setAttribute('data-cols', targetCols);
+    grid.innerHTML = '';
+
+    // Create column containers
+    const cols = [];
+    for (let c = 0; c < targetCols; c++) {
+      const col = document.createElement('div');
+      col.className = 'gallery-masonry-col';
+      grid.appendChild(col);
+      cols.push(col);
+    }
+
+    // Distribute matching items from left to right across columns
+    filteredItems.forEach((item, idx) => {
+      item.style.setProperty('--delay-index', idx);
+      if (animate) {
+        item.classList.remove('gallery-animate-in');
+        void item.offsetWidth; // Force reflow to restart transition
+        item.classList.add('gallery-animate-in');
+      } else {
+        item.classList.remove('gallery-animate-in');
+      }
+
+      // Round-robin placement: col 0, col 1, col 2, col 3, then col 0, col 1, etc.
+      cols[idx % targetCols].appendChild(item);
+    });
+
+    if (lightboxTotal) lightboxTotal.textContent = activeItems.length;
+  }
+
+  // Initial layout render
+  renderMasonry(false);
+
+  // Resize handler with debounce
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newCols = Math.min(getResponsiveCols(), Math.max(1, activeItems.length));
+      if (newCols !== currentRenderedCols) {
+        renderMasonry(false);
+      }
+    }, 120);
+  }, { passive: true });
+
+  // Handle category filter clicks with smooth animation
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) return;
+
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
 
-      const filter = btn.dataset.filter;
-      activeItems = [];
-
-      galleryItems.forEach(item => {
-        const cat = item.dataset.category;
-        if (filter === 'all' || cat === filter) {
-          item.classList.remove('gallery-hidden');
-          // Trigger re-appear animation
-          item.classList.remove('gallery-show');
-          void item.offsetWidth; // force reflow to restart animation
-          item.classList.add('gallery-show');
-          setTimeout(() => item.classList.remove('gallery-show'), 700);
-          activeItems.push(item);
-        } else {
-          item.classList.remove('gallery-show');
-          item.classList.add('gallery-hidden');
-        }
-      });
-
-      if (lightboxTotal) lightboxTotal.textContent = activeItems.length;
+      // Subtle fade out, rebuild, fade in
+      grid.classList.add('is-filtering');
+      setTimeout(() => {
+        renderMasonry(true);
+        grid.classList.remove('is-filtering');
+      }, 160);
     });
   });
-
-  // Initialize total count
-  if (lightboxTotal) lightboxTotal.textContent = activeItems.length;
 
   // --- OPEN LIGHTBOX ---
   function openLightbox(index) {
@@ -949,8 +1010,7 @@ function initGallery() {
   function closeLightbox() {
     lightbox.classList.remove('is-open');
     document.body.style.overflow = '';
-    // Clear src after transition so the old image doesn't flash on next open
-    setTimeout(() => { lightboxImg.src = ''; }, 300);
+    setTimeout(() => { lightboxImg.src = ''; }, 280);
   }
 
   function showPrev() {
@@ -963,13 +1023,12 @@ function initGallery() {
     openLightbox(currentIndex);
   }
 
-  // Click on gallery item
-  galleryItems.forEach((item, idx) => {
-    item.addEventListener('click', () => {
-      // Recalculate index within activeItems
-      const activeIdx = activeItems.indexOf(item);
-      if (activeIdx !== -1) openLightbox(activeIdx);
-    });
+  // Event delegation on grid for card clicks
+  grid.addEventListener('click', (e) => {
+    const card = e.target.closest('.gallery-item');
+    if (!card) return;
+    const activeIdx = activeItems.indexOf(card);
+    if (activeIdx !== -1) openLightbox(activeIdx);
   });
 
   // Close actions

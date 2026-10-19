@@ -76,29 +76,27 @@
           <img src="assets/img/logo1.png" alt="Super Tech Calibration Services" class="brand-logo-img">
         </a>
 
-        <!-- Desktop Links -->
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About Us</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#scope" class="nav-link">Scope Explorer</a></li>
-
-          <li><a href="#verify" class="nav-link">Verify Certificate</a></li>
-          <li><a href="#team" class="nav-link">Leadership</a></li>
-          <li><a href="#locations" class="nav-link">Locations</a></li>
-          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <!-- Desktop & Mobile Navigation Links -->
+        <ul class="nav-links" id="mainNavLinks">
+          <li class="nav-item nav-item-essential"><a href="#home" class="nav-link active">Home</a></li>
+          <li class="nav-item nav-item-secondary"><a href="#about" class="nav-link">About Us</a></li>
+          <li class="nav-item nav-item-essential"><a href="#services" class="nav-link">Services</a></li>
+          <li class="nav-item nav-item-secondary"><a href="#scope" class="nav-link">Scope Explorer</a></li>
+          <li class="nav-item nav-item-essential"><a href="#verify" class="nav-link"><span class="nav-text-full">Verify Certificate</span><span class="nav-text-short">Verify Cert</span></a></li>
+          <li class="nav-item nav-item-secondary"><a href="#team" class="nav-link">Leadership</a></li>
+          <li class="nav-item nav-item-secondary"><a href="#locations" class="nav-link">Locations</a></li>
+          <li class="nav-item nav-item-secondary"><a href="#gallery" class="nav-link">Gallery</a></li>
         </ul>
 
         <!-- Action CTAs -->
         <div class="nav-cta-group">
-
           <a href="https://api.whatsapp.com/send?phone=917976248987&text=Hello%20Super%20Tech%20Calibration%20Services,%20I%20would%20like%20to%20inquire%20about%20instrument%20calibration." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
           </a>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open mobile navigation menu">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
           <i class="fa-solid fa-bars"></i>
         </button>
       </nav>
@@ -111,24 +109,24 @@
   <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" aria-hidden="true"></div>
   <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Drawer">
     <div class="mobile-drawer-header">
-      <img src="assets/img/logo.svg" alt="Super Tech Calibration" class="mobile-drawer-logo">
+      <img src="assets/img/logo1.png" alt="Super Tech Calibration" class="mobile-drawer-logo">
       <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close navigation menu">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
 
     <div class="mobile-drawer-body">
+      <div class="mobile-drawer-label">Menu &amp; Sections</div>
       <ul class="mobile-nav-links">
         <li><a href="#home" class="mobile-nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
-        <li><a href="#about" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About Laboratory</a></li>
-        <li><a href="#services" class="mobile-nav-link"><i class="fa-solid fa-gear"></i> Calibration Services</a></li>
-        <li><a href="#scope" class="mobile-nav-link"><i class="fa-solid fa-magnifying-glass"></i> Scope Explorer (50+ Items)</a></li>
-
+        <li><a href="#about" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+        <li><a href="#services" class="mobile-nav-link"><i class="fa-solid fa-gear"></i> Services</a></li>
+        <li><a href="#scope" class="mobile-nav-link"><i class="fa-solid fa-magnifying-glass"></i> Scope Explorer</a></li>
         <li><a href="#verify" class="mobile-nav-link"><i class="fa-solid fa-shield-halved"></i> Verify Certificate</a></li>
-        <li><a href="#team" class="mobile-nav-link"><i class="fa-solid fa-user-graduate"></i> Technical Leadership</a></li>
-        <li><a href="#locations" class="mobile-nav-link"><i class="fa-solid fa-map-location-dot"></i> Head Office & Lab Locations</a></li>
-        <li><a href="#gallery" class="mobile-nav-link"><i class="fa-solid fa-images"></i> Photo Gallery</a></li>
-        <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact & Inquiries</a></li>
+        <li><a href="#team" class="mobile-nav-link"><i class="fa-solid fa-user-graduate"></i> Leadership</a></li>
+        <li><a href="#locations" class="mobile-nav-link"><i class="fa-solid fa-map-location-dot"></i> Locations</a></li>
+        <li><a href="#gallery" class="mobile-nav-link"><i class="fa-solid fa-images"></i> Gallery</a></li>
+        <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact &amp; Inquiries</a></li>
       </ul>
     </div>
 
@@ -936,134 +934,158 @@
         <button class="gallery-filter-btn" data-filter="facility">Facility</button>
       </div>
 
-      <!-- Gallery Grid -->
-      <div class="gallery-grid reveal reveal-up delay-200" id="galleryGrid">
+      <!-- Gallery Grid (Masonry) -->
+      <div class="gallery-grid reveal reveal-up delay-200" id="galleryGrid" data-cols="4">
 
-        <div class="gallery-item" data-category="instruments" data-title="Shore Hardness Tester" data-desc="Package Shore Hardness Tester (Type D) — a key instrument in our hardness measurement calibration scope." style="--i:1">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-shore-hardness-tester.jpg" alt="Shore Hardness Tester Calibration Instrument" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Shore Hardness Tester</span>
+        <!-- Item 1: Shore Hardness Tester (Mechanical Instruments) -->
+        <div class="gallery-item" data-category="instruments" data-title="Shore Hardness Tester (Type D)" data-desc="Package Shore Hardness Tester (Type D) — a key instrument in our hardness measurement calibration scope.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 1024 / 756;">
+              <img src="assets/img/gallery-shore-hardness-tester.jpg" alt="Shore Hardness Tester Calibration Instrument" width="1024" height="756" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge"><i class="fa-solid fa-ruler-combined"></i> Mechanical</span>
-            <p>Shore Hardness Tester (Type D)</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-mech"><i class="fa-solid fa-ruler-combined"></i> Mechanical</span>
+              <p class="gallery-caption-title" title="Shore Hardness Tester (Type D)">Shore Hardness Tester (Type D)</p>
+            </div>
           </div>
         </div>
 
-        <div class="gallery-item gallery-item-tall" data-category="instruments" data-title="Digital Multimeter" data-desc="Process Calibrator &amp; Digital Multimeter (CAT II 600V) — our primary Electro-Technical calibration standard." style="--i:2">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-digital-multimeter.jpg" alt="Digital Multimeter Electro-Technical Calibration" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Digital Multimeter</span>
+        <!-- Item 2: Digital Multimeter (Electro-Technical Instruments) -->
+        <div class="gallery-item" data-category="instruments" data-title="Digital Multimeter & Process Calibrator" data-desc="Process Calibrator &amp; Digital Multimeter (CAT II 600V) — our primary Electro-Technical calibration standard.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 607 / 1024;">
+              <img src="assets/img/gallery-digital-multimeter.jpg" alt="Digital Multimeter Electro-Technical Calibration" width="607" height="1024" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge gallery-cat-elec"><i class="fa-solid fa-bolt"></i> Electro-Technical</span>
-            <p>Process Calibrator & Multimeter</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-elec"><i class="fa-solid fa-bolt"></i> Electro-Tech</span>
+              <p class="gallery-caption-title" title="Process Calibrator & Multimeter">Process Calibrator &amp; Multimeter</p>
+            </div>
           </div>
         </div>
 
-        <div class="gallery-item gallery-item-wide" data-category="standards" data-title="Dry Film Thickness Standards" data-desc="Certified Dry Film Thickness Standards (9–735 microns, ±2 microns accuracy) — NPL-traceable reference foils for coating gauge calibration." style="--i:3">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-dry-film-standards.jpg" alt="Dry Film Thickness Reference Standards" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Dry Film Thickness Standards</span>
+        <!-- Item 3: Dry Film Thickness Standards (Standards) -->
+        <div class="gallery-item" data-category="standards" data-title="Dry Film Thickness Reference Standards" data-desc="Certified Dry Film Thickness Standards (9–735 microns, ±2 microns accuracy) — NPL-traceable reference foils for coating gauge calibration.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 1024 / 809;">
+              <img src="assets/img/gallery-dry-film-standards.jpg" alt="Dry Film Thickness Reference Standards" width="1024" height="809" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge gallery-cat-std"><i class="fa-solid fa-certificate"></i> Standards</span>
-            <p>Dry Film Thickness Reference Foils (9–735 µm)</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-std"><i class="fa-solid fa-certificate"></i> Standards</span>
+              <p class="gallery-caption-title" title="Dry Film Thickness Reference Foils (9–735 µm)">Dry Film Thickness Foils (9–735 µm)</p>
+            </div>
           </div>
         </div>
 
-        <div class="gallery-item gallery-item-wide" data-category="instruments" data-title="Precision Metrology Suite" data-desc="Digital Dial Indicator, Micrometer, Vernier Caliper &amp; Pressure Gauge — the core of our Mechanical &amp; Dimensional calibration capabilities." style="--i:4">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-precision-instruments.jpg" alt="Precision Metrology Instruments Calibration" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Precision Metrology Suite</span>
+        <!-- Item 4: Precision Metrology Suite (Mechanical Instruments) -->
+        <div class="gallery-item" data-category="instruments" data-title="Precision Metrology Suite" data-desc="Digital Dial Indicator, Micrometer, Vernier Caliper &amp; Pressure Gauge — the core of our Mechanical &amp; Dimensional calibration capabilities.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 1024 / 644;">
+              <img src="assets/img/gallery-precision-instruments.jpg" alt="Precision Metrology Instruments Calibration" width="1024" height="644" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge"><i class="fa-solid fa-ruler-combined"></i> Mechanical</span>
-            <p>Digital Indicator, Micrometer & Pressure Gauge Ensemble</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-mech"><i class="fa-solid fa-ruler-combined"></i> Mechanical</span>
+              <p class="gallery-caption-title" title="Precision Metrology Ensemble (Indicators & Calipers)">Precision Metrology Ensemble</p>
+            </div>
           </div>
         </div>
 
-        <div class="gallery-item" data-category="facility" data-title="Laboratory Facility — Entry Corridor" data-desc="The entry corridor of our cleanroom laboratory facility at S-52, Phase III, Bhiwadi — temperature-controlled at 20°C ± 1°C for zero thermal drift." style="--i:5">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-lab-facility.jpg" alt="Super Tech Calibration Laboratory Facility Bhiwadi" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Laboratory Facility</span>
+        <!-- Item 5: Laboratory Facility (Facility) -->
+        <div class="gallery-item" data-category="facility" data-title="Laboratory Facility — Entry Corridor" data-desc="The entry corridor of our cleanroom laboratory facility at S-52, Phase III, Bhiwadi — temperature-controlled at 20°C ± 1°C for zero thermal drift.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 774 / 1024;">
+              <img src="assets/img/gallery-lab-facility.jpg" alt="Super Tech Calibration Laboratory Facility Bhiwadi" width="774" height="1024" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
-            <p>Cleanroom Lab — S-52, Phase III, Bhiwadi</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
+              <p class="gallery-caption-title" title="Cleanroom Lab — S-52, Phase III, Bhiwadi">Cleanroom Lab — S-52, Bhiwadi</p>
+            </div>
           </div>
         </div>
 
-        <div class="gallery-item gallery-item-wide" data-category="facility" data-title="Client Reception Area" data-desc="Our modern client reception area at the Head Office — TC-622, Capital Highstreet, Bhiwadi. Designed for comfortable wait time and professional client meetings." style="--i:6">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-office-reception.jpg" alt="Super Tech Head Office Reception Area Bhiwadi" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Client Reception Area</span>
+        <!-- Item 6: Client Reception Area (Facility) -->
+        <div class="gallery-item" data-category="facility" data-title="Client Reception Area" data-desc="Our modern client reception area at the Head Office — TC-622, Capital Highstreet, Bhiwadi. Designed for comfortable wait time and professional client meetings.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 772 / 1024;">
+              <img src="assets/img/gallery-office-reception.jpg" alt="Super Tech Head Office Reception Area Bhiwadi" width="772" height="1024" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
-            <p>Client Waiting & Reception — Head Office, TC-622</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
+              <p class="gallery-caption-title" title="Client Waiting & Reception — Head Office">Client Waiting &amp; Reception</p>
+            </div>
           </div>
         </div>
 
-        <div class="gallery-item gallery-item-tall" data-category="facility" data-title="Director's Cabin" data-desc="The Director's private cabin at our Head Office — a premium workspace with LED ambient lighting, glass-top executive desk, and a serene garden view." style="--i:7">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-office-cabin.jpg" alt="Super Tech Director Cabin Head Office Bhiwadi" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Director's Cabin</span>
+        <!-- Item 7: Director's Cabin (Facility) -->
+        <div class="gallery-item" data-category="facility" data-title="Director's Cabin" data-desc="The Director's private cabin at our Head Office — a premium workspace with LED ambient lighting, glass-top executive desk, and a serene garden view.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 768 / 1024;">
+              <img src="assets/img/gallery-office-cabin.jpg" alt="Super Tech Director Cabin Head Office Bhiwadi" width="768" height="1024" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
-            <p>Director's Cabin — LED-lit Executive Suite</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-building"></i> Facility</span>
+              <p class="gallery-caption-title" title="Director's Cabin — LED Executive Suite">Director's Cabin — Executive Suite</p>
+            </div>
           </div>
         </div>
 
-        <div class="gallery-item" data-category="facility" data-title="Decorative Office Entrance" data-desc="The beautifully decorated glass entrance door of our Head Office adorned with floral garlands — a warm welcome for every client visiting Super Tech Calibration Services." style="--i:8">
-          <div class="gallery-img-wrap">
-            <img src="assets/img/gallery-office-entrance.jpg" alt="Super Tech Office Entrance Decorative Glass Door" loading="lazy">
-            <div class="gallery-overlay">
-              <div class="gallery-overlay-content">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span class="gallery-item-title">Office Entrance</span>
+        <!-- Item 8: Decorative Office Entrance (Facility) -->
+        <div class="gallery-item" data-category="facility" data-title="Decorative Office Entrance" data-desc="The beautifully decorated glass entrance door of our Head Office adorned with floral garlands — a warm welcome for every client visiting Super Tech Calibration Services.">
+          <div class="gallery-card-inner">
+            <div class="gallery-img-wrap" style="aspect-ratio: 769 / 1024;">
+              <img src="assets/img/gallery-office-entrance.jpg" alt="Super Tech Office Entrance Decorative Glass Door" width="769" height="1024" loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-content">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  <span class="gallery-overlay-text">View Photo</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="gallery-item-caption">
-            <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-door-open"></i> Facility</span>
-            <p>Decorative Glass Entrance — Head Office</p>
+            <div class="gallery-item-caption">
+              <span class="gallery-cat-badge gallery-cat-facility"><i class="fa-solid fa-door-open"></i> Facility</span>
+              <p class="gallery-caption-title" title="Decorative Glass Entrance — Head Office">Decorative Glass Entrance</p>
+            </div>
           </div>
         </div>
 
