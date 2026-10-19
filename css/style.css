@@ -404,30 +404,37 @@ button {
    HEADER & NAVIGATION
    ========================================================================== */
 
-/* Top Info Bar (Removed per user request) */
+/* Top Direct Contact Bar */
 .top-bar {
-  display: none !important;
+  background-color: var(--slate-900);
+  color: var(--slate-300);
+  font-size: 0.8125rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.45rem 0;
+  position: relative;
+  z-index: 1001;
 }
 
 .top-bar-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1.5rem;
 }
 
-.top-bar-left, .top-bar-right {
+.top-bar-contacts {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.6rem;
   flex-wrap: wrap;
 }
 
 .top-bar-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
+  color: var(--slate-300);
   transition: color var(--transition-fast);
 }
 
@@ -437,7 +444,7 @@ button {
 
 .top-bar-item i {
   color: var(--teal-400);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
 }
 
 .location-highlight {
@@ -2359,9 +2366,27 @@ button {
     padding-bottom: 3.5rem;
   }
   
-  /* Top bar hidden on mobile for cleaner screen space */
+  /* Compact top direct contacts bar on mobile */
   .top-bar {
-    display: none;
+    display: block;
+    background-color: var(--slate-900);
+    padding: 0.35rem 0;
+    font-size: 0.72rem;
+  }
+
+  .top-bar-inner {
+    justify-content: center;
+  }
+
+  .top-bar-contacts {
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .top-bar-item {
+    font-size: 0.72rem;
+    gap: 0.35rem;
   }
 
   /* Compact responsive header with minimal vertical height */
